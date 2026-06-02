@@ -25,7 +25,7 @@ jobs:
       - name: Build CLI
         run: ./packages/opencode/script/build.ts
         env:
-          OPENCODE_VERSION: ${{ github.ref_name }}
+          OPENCODE_VERSION: 0.0.0-dev+${{ github.sha }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -64,7 +64,7 @@ jobs:
         run: bun ./scripts/prepare.ts
         working-directory: packages/desktop
         env:
-          OPENCODE_VERSION: ${{ github.ref_name }}
+          OPENCODE_VERSION: 0.0.0-dev+${{ github.sha }}
           OPENCODE_CHANNEL: prod
           OPENCODE_CLI_ARTIFACT: opencode-cli-windows
           RUST_TARGET: ${{ matrix.target }}
